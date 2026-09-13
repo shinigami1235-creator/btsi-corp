@@ -4,8 +4,8 @@ A static rebuild of btsi.com.ph. No WordPress, no plugins, no database, nothing
 to patch. 133 pages, about 2 MB for the whole site.
 
 Editing it needs no code and no computer: the form at `/admin/` writes to this
-repository and GitHub rebuilds the site within two minutes. See
-[EDITING.md](EDITING.md).
+repository and GitHub rebuilds the site within two minutes. The guide for
+whoever does that is [EDITING.md](EDITING.md).
 
 ## What is here
 

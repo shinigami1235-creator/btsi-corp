@@ -440,14 +440,25 @@ p { margin: 0 0 1em; }
 .svc-lg h2 { font-size: var(--t-2xl); }
 
 /* --- stats -------------------------------------------------------------- */
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+  /* The figure size, named once, because the box reserved for a value is the
+     same height whether the value is a figure or a word. */
+  --fig: clamp(2rem, 1.4rem + 2.1vw, 3.2rem);
+}
 .stat { background: var(--black); padding: 36px 28px; }
 .stat strong {
-  display: block; font-family: var(--h);
-  font-size: clamp(2rem, 1.4rem + 2.1vw, 3.2rem); font-weight: 900;
+  font-family: var(--h);
+  font-size: var(--fig); font-weight: 900;
   color: #fff; line-height: 1; letter-spacing: -.045em;
+  /* A word is set smaller than a figure, so left alone it floated above the
+     line the figures sit on and pulled its caption up with it. The box is the
+     height of a figure and the value sits on the bottom of it, so all four
+     values share a baseline and all four captions line up. */
+  display: flex; align-items: flex-end;
+  min-height: var(--fig);
 }
-/* A word has to fit the box a figure was sized for. */
 .stat .stat-word {
   font-size: clamp(1.25rem, .95rem + 1vw, 1.7rem);
   letter-spacing: -.03em; line-height: 1.15;
