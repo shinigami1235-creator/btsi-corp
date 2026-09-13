@@ -716,9 +716,9 @@ def company_quotes():
         for i, t in enumerate(TESTIMONIALS))
     return """
 <div class="q-cards" id="customers">
-  <div class="cat-head"><h2>%s</h2><span class="count">%d</span></div>
+  <div class="cat-head"><h2>%s</h2></div>
   %s
-</div>""" % (e(C.HOME["testi_h2"]), len(TESTIMONIALS), items)
+</div>""" % (e(C.HOME["testi_h2"]), items)
 
 
 def featured_band():

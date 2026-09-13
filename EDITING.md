@@ -11,13 +11,18 @@ minutes.
 1. Make a GitHub account at github.com.
 2. Send the username to whoever runs the site so they can give you access.
 3. Open the editor address above.
-4. Press "Sign In with Token".
-5. The dialog gives you a link to GitHub's token page with the right
-   permissions already ticked. Generate the token and copy it.
-6. Paste it into the dialog.
+4. Press **Sign In Using Access Token**, the lower of the two buttons. The one
+   above it, "Sign In with GitHub", does not work on this site and ends on a
+   blank page.
+5. In the dialog, follow the link to the GitHub settings page. It opens with
+   the name and the permission already filled in.
+6. Under "Repository access" choose "Only select repositories" and pick
+   btsi-corp. Choose how long the token should last. Press Generate token.
+7. Copy the token, paste it into the dialog, then press Sign In.
 
-The token is kept in this browser only. Signing in on another computer or
-another browser needs a new one.
+A token is a password for the site, so do not send it to anyone. It is kept in
+this browser only: signing in on another computer or another browser needs a
+new one, and so does a token that has expired.
 
 ## What you can change
 
