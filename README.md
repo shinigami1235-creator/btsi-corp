@@ -1,79 +1,79 @@
 # 8BTSI Corp website
 
 A static rebuild of btsi.com.ph. No WordPress, no plugins, no database, nothing
-to patch. 141 files, 1.9 MB for the whole site.
+to patch. 133 pages, about 2 MB for the whole site.
+
+Editing it needs no code and no computer: the form at `/admin/` writes to this
+repository and GitHub rebuilds the site within two minutes. See
+[EDITING.md](EDITING.md).
 
 ## What is here
 
 ```
-dist/                 the finished site, ready to upload
-src/style.css         the stylesheet, copied into dist on build
-src/site.js           menu behaviour, copied into dist on build
-content.py            every sentence written for the site
+data/products/        one file per product, 106 of them
+data/brands/          one file per manufacturer, 14
+data/testimonials/    one file per quote
+taxonomy.json         the five pillars and the categories under them
+content.py            our own authored copy, everything not in data/
+assets/               photographs, logos, icons
+src/style.css         the stylesheet
+src/site.js           the motion, hand written, no libraries
+src/admin/            the website editor
 build.py              the generator
+validate.py           refuses a broken entry before it can publish
+check-links.py        refuses a link that goes nowhere
 lint.py               the writing lint
-catalogue.json        106 products pulled from the old site
-taxonomy.json         category, brand and pillar mapping
-image-manifest.csv    which photograph goes where
-assets/products/      drop product photographs here
+archive/              the original scrape, kept for its old addresses
 ```
 
-## Putting it online
+`dist/` is the built site. It is not committed, because GitHub builds it.
 
-The Netlify project `btsi-corp` already exists and is empty. Open
-https://app.netlify.com/projects/btsi-corp, go to Deploys, and drag the `dist`
-folder onto the drop area. The site goes live at btsi-corp.netlify.app in a few
-seconds.
+## Adding a product
 
-To move the real domain across, add btsi.com.ph under Domain management and
-point the DNS at Netlify. Keep the old site running until the DNS has moved.
+Through the editor at
+https://shinigami1235-creator.github.io/btsi-corp/admin/, which is the point of
+the arrangement. By hand it is one file in `data/products/`, named for the
+address you want the page to have.
 
-## The quote form
+Nothing else needs editing. A product carries its own manufacturer and
+categories, so the lists it belongs to work themselves out.
 
-The form posts to Netlify Forms, so there is no backend to run and no mail
-server to configure. Turn Forms on in the project settings before the first
-deploy. Submissions land in the Netlify dashboard and can be forwarded to
-info@btsi.com.ph by email notification.
+## Publishing
 
-## Adding product photographs
+Pushing to `main` runs the checks, builds the site and publishes it. `ship.bat`
+pushes for you, having run the same checks here first so a mistake costs ten
+seconds rather than a failed build and an email.
 
-Save each photograph as `assets/products/<slug>.jpg` using the slug in
-image-manifest.csv, then run `python3 build.py`. Any product without a
-photograph shows a placeholder tile, so the site works with none, some or all
-of them.
+If a check fails nothing is published and the live site carries on serving the
+last good build. GitHub emails whoever pushed, with a link to a log that names
+the file and the field.
 
-Shoot or export at 1200px on the long edge. Anything larger is wasted on a
-card that displays at 240px.
-
-## Rebuilding
+## Rebuilding by hand
 
 ```
-python3 lint.py      # check the writing
-python3 build.py     # write dist/
+python validate.py     # the data
+python lint.py         # the writing
+python build.py        # write dist/
+python check-links.py  # every link and picture resolves
 ```
 
 `lint.py` fails on em dashes, curly quotes, negative parallelism, demonstrative
-glosses, restated sentences and a list of banned vocabulary. It carries its own
-known-bad and known-good lines so a rule cannot rot into one that matches
-nothing. Run it before every deploy.
+glosses, restated sentences and a list of banned vocabulary, across both the
+authored copy and the markdown documents. It carries its own known-bad and
+known-good lines so a rule cannot rot into one that matches nothing.
 
-## What the old site was doing
+## Moving to btsi.com.ph
 
-- WordPress 5.3.23 and Avada 6.1.2, both years out of date
-- Four lorem ipsum posts published on the News Blog since 2015
-- Three menu links pointing at `http://localhost/wp88/`
-- 208 requests and 70 images on the homepage, around 5 seconds to load
-- Brand logos served at 506x406 and displayed at 143x115
-- A WooCommerce cart on a catalogue with no prices
-- The contact form asking for an email address twice
+`TARGET` at the top of `build.py`, from `"pages"` to `"domain"`. That drops the
+`/btsi-corp` prefix, turns off `noindex`, writes the sitemap, and writes
+`_redirects` mapping all 106 old WordPress addresses one to one.
 
-Every old address redirects to its new page. The 106 product URLs are mapped
-one to one in `dist/_redirects`, so search results and bookmarks still land.
+GitHub Pages ignores `_redirects`, so those only start working on a host that
+reads it. Until then an old link lands on a 404.
 
 ## Still needed
 
-- Product photographs, 106 of them
-- The logo as SVG or a high resolution PNG. The header currently sets the
-  wordmark in Montserrat, which is close to the original but not the original.
-- Body text for the four Aldena antennas. The old site had none.
-- Real news posts, or leave the News section off.
+- One product photograph, the Omnia µMPX.
+- Body text for four Aldena antennas: `uhf-band`, `vhf-band-fm`, `vhf-band-i`,
+  `vhf-band-iii`. The old site had none, so those pages carry one line each.
+- The logo as SVG. Everything in `assets/site/` is raster.
