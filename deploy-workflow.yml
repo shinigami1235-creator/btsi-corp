@@ -1,0 +1,65 @@
+# Builds the site and publishes it, every time anything is pushed to main.
+#
+# Saving an edit in the website editor is a push, so this is what turns that
+# save into a live page. It takes about a minute and a half.
+#
+# If "Check the data" fails, nothing is published and the live site carries on
+# serving the version before the edit. GitHub emails whoever made the commit
+# with a link to the log, and the log says which file and which field.
+name: Publish the website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time, and never cancel one that is already running: a
+# half-finished deploy is worse than a slow one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check the data
+        run: python validate.py
+
+      # The house style check, on our own authored copy in content.py. It
+      # reports and moves on: a turn of phrase is not a reason to stop a
+      # product going live.
+      - name: Check the writing
+        run: python lint.py
+        continue-on-error: true
+
+      - name: Build the site
+        run: python build.py
+
+      - name: Check nothing links to a page that is not there
+        run: python check-links.py
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,10 @@
+{
+  "title": "Tecsys TS9090-HD H.264/MPEG-2 Encoder",
+  "brand": "tecsys",
+  "categories": [
+    "tv-headend"
+  ],
+  "photo": "",
+  "excerpt": "Suitable for ISDB-T digital terrestrial TV transmission. It has two ASI inputs that can receive TS or BTS. Built-in 10MHz high-precision oscillator with 10MHz external input option. Output 44MHz with digital pre-corrector. Fully developed in Brazil, it is mounted in a 19 \"aluminum cabinet, with an active ventilation unit and a friendly user interface via front panel keys and LCD display.",
+  "body": "TS9090-HD encodes audio and video signals in H.264 HD generating output stream (TS) in ASI standard, compliant with DVB and ISDB-T standards. With an algorithm of very high efficiency allows services in high definition and high quality with rates lower than 4Mbps, allowing savings in bandwidth, with ASI output and TSoIP Ethernet.\n\nMain Features:\n\nMULTIPLEXER\n\nManagement and insertion of DVB / ISDB-T tables PSI: PAT, PMT, SDT and NIT\n\nClosed Caption Digital (VBI)\n\nConfiguration and Management\n\nEmbedded web server configuration system\n\nFront panel with LCD and keyboard\n\nHD VIDEO\n\nCompression: Main stream HD MPEG-4 AVC / H.264 (MP and HP @ L4.1) and MPEG-2 HD\n\nResolution: 1280x720p / 1920x1080i / 1920x1080p\n\nEncoding bit rate 1.3 at 25 Mbps\n\nFrame Rates: 23.97, 24.25, 29.97, 30.50 and 59.94 and 60 (fps)\n\nInput: HDMI, YPrPb and HD-SDI\n\nN ° of Services: An HD service\n\nSD VIDEO\n\nCompression: Main stream SD MPEG-4 AVC / H.264 and MPEG-2 SD\n\nResolution: 720x480i (NTSC) / 720x576i (PAL)\n\nEncoding Bit rate: 1.0 to 25 Mbps\n\nFrame Rates: 25 and 29.97 (fps)\n\nInput: HDMI, YPrPb and HD-SDI\n\nNo. of Services: An SD service\n\nVIDEO 1SEG\n\nCompression: Main stream 1-Seg MPEG-4 AVC / H.264\n\nResolution: 352x288i / 352x288p / 320x240p / 320x180p / 160x120p and 160x90p\n\nEncoding Bit rate: up to 0.25 Mbps\n\nFrame Rates: 5, 10, 15, 24, 29.97 and 30 (fps)\n\nInput: HDMI, YPrPb and HD-SDI\n\nN ° of Services: 1-Seg service\n\nDownloads:\n\nTS9090-HD_SD_1seg Brochure\n\nTS9090-HD_SD_1seg User Manual\n\nTS9090-HD_SD_1seg Setup Guide"
+}

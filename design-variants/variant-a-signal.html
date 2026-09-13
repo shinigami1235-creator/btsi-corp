@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variant A, Signal | 8BTSI Corp.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --navy:#113c93; --navy-deep:#0b2a6b; --navy-ink:#060f2b; --navy-glow:#2f6ae0;
+  --tint:#eef2fb; --ink:#101620; --body:#414a58; --muted:#7b8496;
+  --line:#e3e7ee; --paper:#fff; --alt:#f7f8fa; --onair:#d81e3f;
+  --h:"Montserrat",system-ui,sans-serif; --b:"Inter",system-ui,sans-serif;
+  --wrap:1200px; --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--body);font:400 16px/1.65 var(--b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--navy);text-decoration:none}
+h1,h2,h3{font-family:var(--h);color:var(--ink);font-weight:700;letter-spacing:-.022em;line-height:1.1;margin:0}
+h1{font-size:clamp(2.2rem,1.1rem+3.6vw,4.1rem);font-weight:800}
+h2{font-size:clamp(1.6rem,1.1rem+1.7vw,2.5rem)}
+h3{font-size:1.1rem;letter-spacing:-.01em}
+p{margin:0 0 1em}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
+
+/* reveal ---------------------------------------------------------------- */
+.r{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.r.in{opacity:1;transform:none}
+.r[data-d="1"]{transition-delay:.08s}.r[data-d="2"]{transition-delay:.16s}
+.r[data-d="3"]{transition-delay:.24s}.r[data-d="4"]{transition-delay:.32s}
+.r[data-d="5"]{transition-delay:.4s}
+@media (prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}}
+
+/* header ---------------------------------------------------------------- */
+.head{position:fixed;inset:0 0 auto 0;z-index:60;padding:18px 0;transition:background .35s var(--ease),padding .35s var(--ease),box-shadow .35s var(--ease)}
+.head.stuck{background:rgba(255,255,255,.94);backdrop-filter:blur(14px);padding:10px 0;box-shadow:0 1px 0 var(--line),0 10px 30px rgba(16,22,32,.06)}
+.head-in{display:flex;align-items:center;gap:28px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--h);font-weight:800;letter-spacing:-.03em;color:#fff;transition:color .35s}
+.head.stuck .logo{color:var(--ink)}
+.logo-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:3px;background:var(--navy);color:#fff;font-size:18px;line-height:1}
+.head.stuck .logo-mark{background:var(--navy)}
+.logo-word{font-size:19px}.logo-word em{font-style:normal;opacity:.62;font-weight:600}
+.nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+.nav a{font-size:14.5px;font-weight:500;color:rgba(255,255,255,.88);transition:color .35s}
+.head.stuck .nav a{color:var(--body)}
+.nav a:hover{color:var(--navy-glow)}
+.head.stuck .nav a:hover{color:var(--navy)}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--navy);color:#fff;font-family:var(--b);font-weight:600;font-size:15px;padding:13px 24px;border-radius:3px;border:1px solid var(--navy);cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(17,60,147,.32);background:var(--navy-deep)}
+.btn-sm{padding:10px 18px;font-size:14px}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;box-shadow:none}
+.btn-light{background:#fff;color:var(--navy);border-color:#fff}
+.btn-light:hover{background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.burger{display:none;margin-left:auto;width:42px;height:36px;background:none;border:0;cursor:pointer}
+.burger span{display:block;height:2px;background:#fff;margin:6px 0;transition:background .35s}
+.head.stuck .burger span{background:var(--ink)}
+
+/* hero ------------------------------------------------------------------ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;background:var(--navy-ink);overflow:hidden;padding-bottom:clamp(56px,9vh,110px)}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s var(--ease)}
+.slide.on{opacity:1}
+.slide::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(6,15,43,.72) 0%,rgba(6,15,43,.34) 38%,rgba(6,15,43,.88) 100%),
+  linear-gradient(90deg,rgba(6,15,43,.8) 0%,rgba(6,15,43,.15) 62%)}
+.slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 9s linear}
+.slide.on img{transform:scale(1.15)}
+.hero-in{position:relative;z-index:3;width:100%}
+.hero-copy{max-width:790px}
+.eyebrow{display:inline-flex;align-items:center;gap:11px;font-family:var(--b);font-size:12.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#fff;opacity:.9;margin:0 0 22px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--onair);box-shadow:0 0 0 0 rgba(216,30,63,.7);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(216,30,63,0)}100%{box-shadow:0 0 0 0 rgba(216,30,63,0)}}
+.hero h1{color:#fff;text-wrap:balance}
+.hero .lede{color:rgba(255,255,255,.82);font-size:clamp(1.02rem,.95rem+.4vw,1.2rem);max-width:640px;margin:26px 0 34px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:4;border-top:1px solid rgba(255,255,255,.16)}
+.hero-foot-in{display:flex;align-items:center;gap:20px;padding:16px 0}
+.dots{display:flex;gap:10px;margin-right:auto}
+.dot{width:34px;height:3px;border:0;padding:0;background:rgba(255,255,255,.28);cursor:pointer;position:relative;overflow:hidden}
+.dot span{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.dot.on span{animation:fill 6s linear forwards}
+@keyframes fill{to{transform:scaleX(1)}}
+.slide-label{color:rgba(255,255,255,.7);font-size:13px;font-weight:500;letter-spacing:.02em;min-height:20px}
+.arrows{display:flex;gap:8px}
+.arrow{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;cursor:pointer;border-radius:3px;transition:background .25s,border-color .25s}
+.arrow:hover{background:rgba(255,255,255,.14);border-color:#fff}
+.wave{position:absolute;left:0;right:0;bottom:58px;z-index:2;height:90px;opacity:.5;pointer-events:none}
+.wave path{fill:none;stroke:var(--navy-glow);stroke-width:1.6;stroke-linecap:round}
+
+/* sections -------------------------------------------------------------- */
+.section{padding:clamp(72px,9vw,128px) 0}
+.sec-head{max-width:720px;margin-bottom:clamp(36px,5vw,58px)}
+.sec-head .kicker{font-size:12.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--navy);margin:0 0 14px}
+.sec-head p{color:var(--muted);font-size:1.05rem;margin:16px 0 0}
+
+/* pillars rail ---------------------------------------------------------- */
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 26px;margin-inline:-24px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.pillar{scroll-snap-align:start;flex:0 0 clamp(260px,30vw,330px);position:relative;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:30px 26px 26px;overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s}
+.pillar::before{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:var(--navy);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.pillar:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(16,22,32,.1);border-color:transparent}
+.pillar:hover::before{transform:scaleX(1)}
+.pillar-n{font-family:var(--h);font-size:44px;font-weight:800;line-height:1;color:var(--tint);display:block;margin-bottom:18px;transition:color .45s}
+.pillar:hover .pillar-n{color:#cfdcf8}
+.pillar h3{margin-bottom:10px}
+.pillar p{color:var(--muted);font-size:.95rem;margin:0 0 22px}
+.pillar-count{font-size:13px;font-weight:600;color:var(--navy);display:inline-flex;align-items:center;gap:7px}
+.pillar-count svg{transition:transform .35s var(--ease)}
+.pillar:hover .pillar-count svg{transform:translateX(5px)}
+.rail-hint{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;margin-top:4px}
+
+/* services -------------------------------------------------------------- */
+.svc-band{background:var(--navy-ink);color:rgba(255,255,255,.76);position:relative;overflow:hidden}
+.svc-band::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 420px at 78% 12%,rgba(47,106,224,.3),transparent 62%)}
+.svc-band .wrap{position:relative;z-index:2}
+.svc-band h2,.svc-band h3{color:#fff}
+.svc-band .sec-head p{color:rgba(255,255,255,.64)}
+.svc-band .kicker{color:#7ea6f4}
+.svc-grid{display:grid;gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
+.svc{background:var(--navy-ink);padding:34px 28px;transition:background .4s var(--ease)}
+.svc:hover{background:#0a1735}
+.svc h3{margin-bottom:12px;display:flex;align-items:baseline;gap:12px}
+.svc h3 i{font-style:normal;font-family:var(--h);font-size:13px;color:#7ea6f4;font-weight:700}
+.svc p{margin:0;font-size:.95rem;color:rgba(255,255,255,.68)}
+
+/* stats ----------------------------------------------------------------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{background:var(--paper);padding:34px 26px}
+.stat b{display:block;font-family:var(--h);font-size:clamp(2rem,1.4rem+1.8vw,2.9rem);font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.03em}
+.stat span{display:block;margin-top:10px;font-size:.9rem;color:var(--muted)}
+
+/* brand marquee --------------------------------------------------------- */
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:14px;width:max-content;animation:slide 46s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.chip{flex:0 0 auto;width:250px;border:1px solid var(--line);border-radius:4px;padding:22px 24px;background:var(--paper);transition:border-color .3s,transform .3s var(--ease),box-shadow .3s}
+.chip:hover{border-color:var(--navy);transform:translateY(-4px);box-shadow:0 14px 34px rgba(16,22,32,.09)}
+.chip strong{display:block;font-family:var(--h);font-size:1.02rem;color:var(--ink);margin-bottom:6px}
+.chip span{display:block;font-size:.84rem;color:var(--muted);line-height:1.5}
+@media (prefers-reduced-motion:reduce){.track{animation:none}}
+
+/* cta ------------------------------------------------------------------- */
+.band{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;top:-40%;right:-8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%)}
+.band-in{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:30px;padding:clamp(52px,6vw,78px) 0}
+.band h2{color:#fff;max-width:640px}
+.band p{color:rgba(255,255,255,.8);max-width:560px;margin:14px 0 0}
+.band .btn-light{margin-left:auto}
+
+/* footer ---------------------------------------------------------------- */
+.foot{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:64px 0 0;font-size:.92rem}
+.foot a{color:rgba(255,255,255,.62)}
+.foot a:hover{color:#fff}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1.4fr 1fr;gap:44px}
+.foot h2{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.foot .two{grid-template-columns:1fr 1fr;gap:9px 20px}
+.foot .logo{color:#fff;margin-bottom:14px}
+.foot address{font-style:normal;line-height:1.7;margin-bottom:14px}
+.foot-tag{color:#7ea6f4;font-family:var(--h);font-weight:600;margin-bottom:16px}
+.foot-base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);margin-top:54px;padding:22px 0;font-size:.86rem}
+.foot-base p{margin:0}
+
+@media (max-width:880px){
+  .nav{position:fixed;inset:0 0 auto 0;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;padding:86px 24px 24px;transform:translateY(-102%);transition:transform .45s var(--ease);box-shadow:0 20px 40px rgba(0,0,0,.14)}
+  .nav.open{transform:none}
+  .nav a{color:var(--ink);font-size:17px;padding:10px 0;width:100%;border-bottom:1px solid var(--line)}
+  .nav .btn{margin-top:14px;border-bottom:0;color:#fff}
+  .burger{display:block}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .hero-foot-in{flex-wrap:wrap}
+  .slide-label{order:3;width:100%}
+}
+@media (max-width:520px){.foot-grid{grid-template-columns:1fr}.band .btn-light{margin-left:0}}
+</style>
+</head>
+<body>
+
+<header class="head" id="head">
+  <div class="wrap head-in">
+    <a class="logo" href="#"><span class="logo-mark">8</span><span class="logo-word">BTSI<em>CORP.</em></span></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="#equipment">Equipment</a>
+      <a href="#brands">Brands</a>
+      <a href="#services">Services</a>
+      <a href="#company">Company</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-sm" href="#contact">Request a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="slides" id="slides">
+    <div class="slide on" data-label="Transmitter site, Band II FM"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EXXp5s1P1wriM3bVZftFKIAJAx/hf_20260912_031917_ffc67ca0-ab11-47c9-9032-ee302e2c5f3c.png" alt="A steel FM broadcast transmission mast on a ridge at dusk"></div>
+    <div class="slide" data-label="Studio and audio, AoIP console"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EXXp5s1P1wriM3bVZftFKIAJAx/hf_20260912_031917_ad874809-55b6-4ac5-8d14-7161be12470c.png" alt="A radio studio with a lit audio mixing console and acoustic panels"></div>
+    <div class="slide" data-label="Transmitter room, rack and monitoring"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EXXp5s1P1wriM3bVZftFKIAJAx/hf_20260912_031917_d971c66d-2fa0-4319-aeaa-851677992eb1.png" alt="Racks of broadcast transmitters and processors with status indicators"></div>
+  </div>
+
+  <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path id="w1" d=""></path>
+    <path id="w2" d="" style="opacity:.45"></path>
+  </svg>
+
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">Broadcast supply and engineering since 2006</p>
+      <h1>Transmission, studio and playout equipment for Philippine broadcasters.</h1>
+      <p class="lede">8BTSI Corp supplies the transmitters, antennas, consoles, processors and playout systems that put radio and television stations on air, and our engineers install and commission them anywhere in the country.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#equipment">Browse equipment</a>
+        <a class="btn btn-ghost" href="#contact">Request a quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <div class="wrap hero-foot-in">
+      <div class="dots" id="dots"></div>
+      <p class="slide-label" id="slideLabel">Transmitter site, Band II FM</p>
+      <div class="arrows">
+        <button class="arrow" id="prev" aria-label="Previous slide"><svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M6 1L1 6l5 5M1 6h14" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <button class="arrow" id="next" aria-label="Next slide"><svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M10 1l5 5-5 5M15 6H1" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="equipment">
+  <div class="wrap">
+    <div class="sec-head r">
+      <p class="kicker">Equipment</p>
+      <h2>What we carry</h2>
+      <p>Five equipment groups covering the signal chain from the studio microphone to the antenna.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rail r" data-d="1" id="rail">
+      <a class="pillar" href="#"><span class="pillar-n">01</span><h3>RF transmission</h3><p>FM and AM transmitters, remote control units and radio antennas.</p><span class="pillar-count">18 products <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+      <a class="pillar" href="#"><span class="pillar-n">02</span><h3>TV transmission</h3><p>Television transmitters, exciters, headend and loudness control.</p><span class="pillar-count">18 products <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+      <a class="pillar" href="#"><span class="pillar-n">03</span><h3>Playout systems</h3><p>Television and radio automation, ingest, graphics and ad insertion.</p><span class="pillar-count">15 products <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+      <a class="pillar" href="#"><span class="pillar-n">04</span><h3>Studio and audio</h3><p>AoIP consoles, processing, routing, phone systems and acoustics.</p><span class="pillar-count">51 products <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+      <a class="pillar" href="#"><span class="pillar-n">05</span><h3>IP codecs</h3><p>Audio and video codecs for remotes and studio to transmitter links.</p><span class="pillar-count">5 products <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    </div>
+    <p class="rail-hint r" data-d="2">Drag or scroll sideways for the rest</p>
+  </div>
+</section>
+
+<section class="section svc-band" id="services">
+  <div class="wrap">
+    <div class="sec-head r">
+      <p class="kicker">Services</p>
+      <h2>Engineering and project services</h2>
+      <p>Supply is one part of the contract. We plan the system, install it, wire it and hand it over commissioned.</p>
+    </div>
+    <div class="svc-grid r" data-d="1">
+      <div class="svc"><h3><i>01</i> Project management</h3><p>We plan the system, schedule the work and run it to handover. System planning, studio design layout and customer training are part of it.</p></div>
+      <div class="svc"><h3><i>02</i> Engineering services</h3><p>Our engineers install and commission equipment on site, with years of field experience in Philippine broadcast behind them.</p></div>
+      <div class="svc"><h3><i>03</i> Installation and wiring</h3><p>Racks, cabling, grounding and the transmitter site itself. The station takes delivery of a commissioned system.</p></div>
+      <div class="svc"><h3><i>04</i> Product training</h3><p>We train your operators and engineers on the equipment before we leave.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="wrap">
+    <div class="sec-head r">
+      <p class="kicker">Company</p>
+      <h2>Broadcast equipment supplied, installed and supported in the Philippines.</h2>
+      <p>8BTSI Corp was established in November 2006 to serve the broadcast and telecom industry in the Philippines.</p>
+    </div>
+    <div class="stats r" data-d="1">
+      <div class="stat"><b data-count="2006" data-plain="1">2006</b><span>Serving Philippine broadcast since</span></div>
+      <div class="stat"><b data-count="14">0</b><span>Manufacturers represented</span></div>
+      <div class="stat"><b data-count="106">0</b><span>Products in the catalogue</span></div>
+      <div class="stat"><b data-plain="1">Nationwide</b><span>Installation and service coverage</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="brands" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head r">
+      <p class="kicker">Brands</p>
+      <h2>Brands we represent</h2>
+      <p>Fourteen manufacturers whose equipment we carry, install and support in the Philippines.</p>
+    </div>
+  </div>
+  <div class="marquee r" data-d="1">
+    <div class="track" id="track"></div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="wrap band-in">
+    <div>
+      <h2>Tell us what the station needs.</h2>
+      <p>Send us the power, coverage and studio requirements and we will specify the equipment against them and quote it.</p>
+    </div>
+    <a class="btn btn-light" href="#">Request a quote</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="logo" href="#"><span class="logo-mark">8</span><span class="logo-word">BTSI<em>CORP.</em></span></a>
+      <p class="foot-tag">Being On-Air is Global</p>
+      <address>JEB Building, Unit 305<br>Eulogio Amang Rodriguez Ave., Rosario<br>Pasig City 1609, Metro Manila</address>
+      <ul>
+        <li><a href="tel:+6322754035">02 275 4035</a></li>
+        <li><a href="mailto:info@btsi.com.ph">info@btsi.com.ph</a></li>
+        <li><a href="mailto:support@btsi.com.ph">support@btsi.com.ph</a></li>
+        <li>Weekdays, 8:30am to 5:30pm</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Equipment</h2>
+      <ul><li><a href="#">RF transmission</a></li><li><a href="#">TV transmission</a></li><li><a href="#">Playout systems</a></li><li><a href="#">Studio and audio</a></li><li><a href="#">IP codecs</a></li></ul>
+    </div>
+    <div>
+      <h2>Brands</h2>
+      <ul class="two"><li><a href="#">Aldena</a></li><li><a href="#">Axia</a></li><li><a href="#">Comrex</a></li><li><a href="#">Continental Lensa</a></li><li><a href="#">Elenos</a></li><li><a href="#">Itelco</a></li><li><a href="#">Linear Acoustic</a></li><li><a href="#">Omnia</a></li><li><a href="#">PlayBox</a></li><li><a href="#">Tecsys</a></li><li><a href="#">Telos</a></li><li><a href="#">Vicoustic</a></li><li><a href="#">WinMedia</a></li><li><a href="#">Yellowtec</a></li></ul>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <ul><li><a href="#">Our company</a></li><li><a href="#">Services</a></li><li><a href="#">Contact us</a></li><li><a href="#">Request a quote</a></li></ul>
+    </div>
+  </div>
+  <div class="wrap foot-base"><p>&copy; 2026 8BTSI Corp.</p><p>Pasig City, Philippines</p></div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* header state */
+  var head = document.getElementById("head");
+  function onScroll(){ head.classList.toggle("stuck", window.scrollY > 40); }
+  onScroll(); addEventListener("scroll", onScroll, {passive:true});
+
+  /* mobile menu */
+  var burger = document.getElementById("burger"), nav = document.getElementById("nav");
+  burger.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  nav.addEventListener("click", function(e){
+    if (e.target.tagName === "A") { nav.classList.remove("open"); burger.setAttribute("aria-expanded","false"); }
+  });
+
+  /* hero slider */
+  var slides = [].slice.call(document.querySelectorAll(".slide"));
+  var dotsBox = document.getElementById("dots"), label = document.getElementById("slideLabel");
+  var i = 0, timer = null, DUR = 6000;
+  slides.forEach(function(s, n){
+    var b = document.createElement("button");
+    b.className = "dot" + (n === 0 ? " on" : "");
+    b.setAttribute("aria-label", "Slide " + (n + 1));
+    b.innerHTML = "<span></span>";
+    b.addEventListener("click", function(){ go(n); });
+    dotsBox.appendChild(b);
+  });
+  var dots = [].slice.call(dotsBox.children);
+  function go(n){
+    i = (n + slides.length) % slides.length;
+    slides.forEach(function(s, k){ s.classList.toggle("on", k === i); });
+    dots.forEach(function(d, k){
+      d.classList.remove("on");
+      if (k === i) { void d.offsetWidth; d.classList.add("on"); }
+    });
+    label.textContent = slides[i].dataset.label;
+    restart();
+  }
+  function restart(){ if (reduce) return; clearInterval(timer); timer = setInterval(function(){ go(i + 1); }, DUR); }
+  document.getElementById("next").addEventListener("click", function(){ go(i + 1); });
+  document.getElementById("prev").addEventListener("click", function(){ go(i - 1); });
+  document.addEventListener("visibilitychange", function(){
+    if (document.hidden) clearInterval(timer); else restart();
+  });
+  restart();
+
+  /* hero waveform */
+  var w1 = document.getElementById("w1"), w2 = document.getElementById("w2"), t = 0;
+  function wave(el, amp, freq, phase){
+    var d = "M0 45", x;
+    for (x = 0; x <= 1440; x += 12){
+      d += " L" + x + " " + (45 + Math.sin(x * freq + phase) * amp * Math.sin(x / 1440 * Math.PI));
+    }
+    el.setAttribute("d", d);
+  }
+  function tick(){ t += 0.02; wave(w1, 22, 0.012, t); wave(w2, 14, 0.019, -t * 1.4); requestAnimationFrame(tick); }
+  if (reduce) { wave(w1, 22, 0.012, 0); wave(w2, 14, 0.019, 0); } else tick();
+
+  /* brand marquee */
+  var brands = [
+    ["Aldena","Radio and television broadcast antennas"],
+    ["Axia","AoIP mixing consoles, routing and control"],
+    ["Comrex","Video codecs for field reporting"],
+    ["Continental Lensa","AM transmitters, 3kW to 50kW"],
+    ["Elenos","FM transmitters, exciters and remote control"],
+    ["Itelco","TV transmitters and exciters"],
+    ["Linear Acoustic","DTV loudness control and upmixing"],
+    ["Omnia","Audio processing for FM, AM and streaming"],
+    ["PlayBox","Television playout and automation"],
+    ["Tecsys","Satellite reception and headend"],
+    ["Telos","Talkshow systems and audio codecs"],
+    ["Vicoustic","Acoustic treatment"],
+    ["WinMedia","Radio automation and scheduling"],
+    ["Yellowtec","Microphone arms, signalling and mixing"]
+  ];
+  var track = document.getElementById("track");
+  function fill(){
+    brands.forEach(function(b){
+      var a = document.createElement("a");
+      a.className = "chip"; a.href = "#";
+      a.innerHTML = "<strong></strong><span></span>";
+      a.firstChild.textContent = b[0];
+      a.lastChild.textContent = b[1];
+      track.appendChild(a);
+    });
+  }
+  fill(); fill();
+
+  /* reveal on scroll */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, {rootMargin: "0px 0px -12% 0px", threshold: 0.1});
+  document.querySelectorAll(".r").forEach(function(el){ io.observe(el); });
+
+  /* counters */
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      cio.unobserve(en.target);
+      var el = en.target, end = parseInt(el.dataset.count, 10);
+      if (el.dataset.plain || reduce) { el.textContent = el.dataset.count || el.textContent; return; }
+      var start = performance.now(), DURC = 1300;
+      (function step(now){
+        var p = Math.min((now - start) / DURC, 1);
+        el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      })(start);
+    });
+  }, {threshold: 0.6});
+  document.querySelectorAll("[data-count]").forEach(function(el){ cio.observe(el); });
+})();
+</script>
+</body>
+</html>

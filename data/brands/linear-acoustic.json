@@ -1,0 +1,6 @@
+{
+  "name": "Linear Acoustic",
+  "line": "DTV loudness control and upmixing",
+  "blurb": "The AERO platforms host AEROMAX loudness processing and UPMAX upmixing and downmixing, with Dolby coding and Nielsen watermark encoding available in the same rack unit. Television stations use them to stay inside loudness regulations.",
+  "logo": ""
+}

@@ -1,0 +1,6 @@
+{
+  "name": "PlayBox",
+  "line": "Television playout and automation",
+  "blurb": "PlayBox Neo runs a television channel end to end. AirBox plays out, CaptureBox ingests multiple HD or SD channels at once, TitleBox puts graphics on screen, AdBox handles ad insertion, SafeBox replicates remote content to the local playout server and CloudAir runs the whole channel as software.",
+  "logo": ""
+}

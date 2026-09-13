@@ -1,0 +1,10 @@
+{
+  "title": "Omnia µMPX (Micro MPX) Standalone Software",
+  "brand": "omnia",
+  "categories": [
+    "audio-processors"
+  ],
+  "photo": "",
+  "excerpt": "Omnia µMPX™ Radio's First Composite FM Codec: High-quality MPX over a 320kbps IP connection. Stand-Alone application software.",
+  "body": "Omnia µMPX is a specially designed audio codec that is able to transport high-quality Multiplexed FM signals (including RDS data) over a relatively small 320kbps data pipe. This specialized codec is purpose-built for FM radio. By reducing data requirements, high-quality multiplexed audio can be economically routed from an audio processor, over IP, and directly into an exciter. Lower bandwidth IP connections and narrow band STL channels can now be put into play to transport MPX signals.\n\nOmnia SST was the first processor to include integrated µMPX capabilities. Omnia 9 now offers optional µMPX encoding capability.\n\nStand Alone Windows Encoder and Decoder applications are now available, and you can demo the software by downloading the Omnia SST installer. Unlicensed versions serve as a great “work bench” demo of the actual applications, but until a license is purchased, these versions play periodic tones, and are not suitable for air. Refer to the SST manual µMPX section starting on page 59 for more information on configuration. Please note that to order a license you will need to generate a license key from the exact machine you plan to run the software on.\n\nDownloads:\n\nOmnia µMPX™ Introduction – Telos Alliance NAB 2016"
+}

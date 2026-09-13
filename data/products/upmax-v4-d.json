@@ -1,0 +1,10 @@
+{
+  "title": "Linear Acoustic UPMAX v4-D Surroundfield Controller",
+  "brand": "linear-acoustic",
+  "categories": [
+    "tv-loudness-control"
+  ],
+  "photo": "",
+  "excerpt": "Drawing upon the success of its predecessors, UPMAX v4-D produces engaging 5.1-channel audio from two- and three-channel sources with ease and seamlessly transitions between discrete and upmixed audio.",
+  "body": "The Most Stable and Trusted Upmixing Available\n\nTracing its lineage back to the original UPMAX 2251, UPMAX v4-D offers the most stable and trusted algorithm in use today for both production and unattended upmixing. Critically, its output is completely downmix compatible and the resulting downmix is nearly indistinguishable from the original 2-channel source. For unattended operation, AutoMAX-II detection seamlessly and automatically transitions between discrete and upmixed audio, or control can be handled via GPI/O.\n\nFlexible Surroundfield\n\nThe upmixed “surroundfield” can be infinitely adjusted, allowing programming ranging from simple stereo audio to an LtRt downmix to be appropriately reproduced through a 5.1-channel playback system. Optional bass enhancement for the LFE channel allows a subwoofer channel to be created without compromising the downmix.\n\nBuilt-in Loudness Metering\n\nA built-in LKFS meter provides loudness measurements per ITU-R BS.1770-3, simplifying the process of making sure output levels are properly adjusted to comply with loudness regulations around the world.\n\nFeatures:\n\n5.1-channel audio from 2- and 3-channel sources\n\nFulltime 2-channel downmix output\n\nVery low latency for live applications\n\nHD/SD-SDI and AES inputs\n\nHD/SD-SDI, AES outputs\n\nBuilt-in ITU loudness meter\n\nSNMP monitoring\n\nDual redundant internal PSU and relay bypass\n\nDownloads:\n\nUPMAX v4 Brochure"
+}

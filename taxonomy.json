@@ -1,0 +1,54 @@
+{
+  "note": "The shape of the equipment section: five pillars, and the categories under each. Which products are in them is decided by the products themselves, in data/products/*.json. Adding a category here makes it available in the website editor's Categories dropdown on the next build.",
+  "pillars": {
+    "rf-transmission": {
+      "title": "RF transmission",
+      "categories": [
+        "fm-transmitters",
+        "fm-remote-control-unit",
+        "am-transmitters",
+        "radio-broadcast-antennas"
+      ]
+    },
+    "tv-transmission": {
+      "title": "TV transmission",
+      "categories": [
+        "tv-transmitters",
+        "tv-exciters",
+        "tv-headend",
+        "tv-loudness-control",
+        "tv-broadcast-antennas"
+      ]
+    },
+    "playout": {
+      "title": "Playout systems",
+      "categories": [
+        "tv-automation",
+        "radio-automation"
+      ]
+    },
+    "studio-audio": {
+      "title": "Studio and audio",
+      "categories": [
+        "networked-radio-consoles",
+        "audio-processors",
+        "audio-interfaces-routing-control",
+        "axia-software",
+        "broadcast-telephone-systems",
+        "microphone-processing",
+        "audio-mixers",
+        "mic-arm",
+        "signaling-device",
+        "streaming-audio-processing-encoding",
+        "acoustic-panels"
+      ]
+    },
+    "ip-codecs": {
+      "title": "IP codecs",
+      "categories": [
+        "audio-codecs",
+        "video-codecs"
+      ]
+    }
+  }
+}

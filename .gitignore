@@ -1,0 +1,10 @@
+# Built by the deploy, never committed.
+dist/
+
+__pycache__/
+*.pyc
+
+# Superseded by archive/catalogue.json and by ship.bat. Delete them when
+# convenient; until then they stay out of the repository.
+/catalogue.json
+/publish.bat

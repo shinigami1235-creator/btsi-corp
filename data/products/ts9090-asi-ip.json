@@ -1,0 +1,10 @@
+{
+  "title": "Tecsys TS9090-ASI/IP Converter",
+  "brand": "tecsys",
+  "categories": [
+    "tv-headend"
+  ],
+  "photo": "",
+  "excerpt": "TS9090-ASI / IP is a standalone ASI-IP encapsulation module and IP packet converter for DVB ASI. It can be used for unicast / multicast transmissions, supporting streams up to 150Mbits with UDP or RTP protocol. It also has automatic identifier for packets of 188 bytes or TS 204 bytes (including ISDB-T BTS). With an easy-to-configure graphical interface the TS 9090-ASI / IP is the complete tool for integrating digital links, UpLinks and Headends.",
+  "body": "TS9090-ASI / IP is a standalone ASI-IP encapsulation module and IP packet converter for DVB ASI. It can be used for unicast / multicast transmissions, supporting streams up to 150Mbits with UDP or RTP protocol. It also has automatic identifier for packets of 188 bytes or TS 204 bytes (including ISDB-T BTS). With an easy-to-configure graphical interface the TS 9090-ASI / IP is the complete tool for integrating digital links, UpLinks and Headends.\n\nMain Features:\n\nDVB-ASI data rates from 100Kb / s to 150Mb / s DVB-ASI packet size 188 byte or 204 packet-detection byte\n\nMPEG Configurable as receiver or transmitter\n\nDownloads:\n\nTS9090-ASI/IP Brochure\n\nTS9090-ASI/IP User Manual"
+}

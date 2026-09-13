@@ -1,0 +1,10 @@
+{
+  "title": "PlayBox CaptureBox Neo",
+  "brand": "playbox",
+  "categories": [
+    "tv-automation"
+  ],
+  "photo": "",
+  "excerpt": "Simultaneous Ingest of Multiple Channels. CaptureBox Neo enables multiple channels of HD or SD content to be captured from HD/SD SDI digital feeds, analogue sources and MPEG transport streams. Four video sources can be monitored on a single screen and controlled via a new streamlined user interface.",
+  "body": "A successor to existing CaptureBox, CaptureBox Neo enables multiple channels of HD or SD content to be captured from HD/SD SDI digital feeds, analogue sources and MPEG transport streams. Four video sources can be monitored on a single screen and controlled via a new streamlined user interface. Audio levels can be monitored as loudness/true-peak displays and adjusted when required.\n\nContent ingested to CaptureBox Neo is available for playback within a few seconds of capture commencing. The CaptureBox Neo feature set also includes capture-list import from third-party traffic systems, support for CEA-608/708 closed-captioning and automated VTR control via RS-422 withbatch-capture listing.\n\nFeatures:\n\nFour independent ingest channels in a single server *\n\nScheduled capturing of satellite feeds with automated channel switching\n\nComprehensive Metadata handling (TCI, MTD creation)\n\nHD capturing (optional)\n\nFile splitting based on duration\n\nMulti-channel audio capturing (optional)\n\nAPI available for OEMs\n\nAll 4 instances in a single screen\n\nNew Streamlined User Interface Design\n\nAdd Metadata during ingest (position markers, notes, etc.)\n\nLoudness/True Peak audio meters are available for precise audio level fine-tuning\n\nAutomated RS-422 VTR control with batch capturing lists\n\nThird-party traffic system capture list import\n\nClosed Captioning support under EIA-608/708 standards\n\nCaptureBox Neo latest features\n\nNew streaming input (support for: https, HTTP, UDP, RTMP, MMS and MMSH, YouTube)\n\nExternal control plug in from AirBox Neo\n\nHEVC file format ingest\n\nXAVC file format ingest\n\nDownloads:\n\nCaptureBox Neo Product Sheet"
+}
