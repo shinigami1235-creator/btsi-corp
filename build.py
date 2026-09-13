@@ -1486,19 +1486,37 @@ collections:
   - name: products
     label: Products
     label_singular: Product
+    icon: inventory_2
+    description: >-
+      Everything in the catalogue. Press **New Product** to add one. It is on
+      the site about two minutes after you save.
     folder: /data/products
     format: json
     extension: json
     create: true
+    duplicate: false
     identifier_field: title
     slug: "{{title}}"
     summary: "{{title}}"
-    sortable_fields: [title, brand]
+    thumbnail: photo
+    sortable_fields:
+      fields: [title, brand]
+      default:
+        field: title
+        direction: ascending
     fields:
-      - { name: title, label: Product name, widget: string }
+      - name: title
+        label: Product name
+        widget: string
+        hint: >-
+          The full name as it should read, including the manufacturer, as in
+          Elenos Indium 2000. It becomes the web address of the page, so
+          changing it later breaks any link anyone had to the old one.
       - name: brand
         label: Manufacturer
         widget: select
+        hint: >-
+          Not on the list? Add it under Manufacturers first, then come back.
         options:
 %(brands)s
       - name: categories
@@ -1506,46 +1524,113 @@ collections:
         widget: select
         multiple: true
         min: 1
+        hint: >-
+          At least one. The product appears on the page of every category you
+          tick.
         options:
 %(cats)s
-      - { name: photo, label: Photograph, widget: image, required: false }
-      - { name: excerpt, label: One line summary, widget: text }
-      - { name: body, label: Full description, widget: text, required: false }
+      - name: photo
+        label: Photograph
+        widget: image
+        required: false
+        hint: >-
+          About 1200 pixels wide. Leave it empty and the card shows a grey
+          panel saying the photograph is to follow.
+      - name: excerpt
+        label: One line summary
+        widget: text
+        hint: >-
+          One or two sentences. This is what shows on the product card, in the
+          search box, and in the preview when someone shares the page.
+      - name: body
+        label: Full description
+        widget: text
+        required: false
+        hint: >-
+          The long text on the product page. Leave a blank line between
+          paragraphs. A line reading `Features:` turns everything under it
+          into a list.
+
+  - divider: true
 
   - name: brands
     label: Manufacturers
     label_singular: Manufacturer
+    icon: factory
+    description: >-
+      The manufacturers whose equipment you sell. Add one here before adding
+      its products.
     folder: /data/brands
     format: json
     extension: json
     create: true
+    duplicate: false
     identifier_field: name
     slug: "{{name}}"
+    summary: "{{name}}"
+    thumbnail: logo
+    sortable_fields:
+      fields: [name]
+      default:
+        field: name
+        direction: ascending
     fields:
-      - { name: name, label: Manufacturer name, widget: string }
-      - { name: line, label: One line summary, widget: string }
-      - { name: blurb, label: Description, widget: text }
+      - name: name
+        label: Manufacturer name
+        widget: string
+        hint: As it should appear, as in Telos Alliance.
+      - name: line
+        label: One line summary
+        widget: string
+        hint: >-
+          What they make, in a few words, as in FM transmitters, exciters and
+          remote control. It sits under the name on the manufacturers page.
+      - name: blurb
+        label: Description
+        widget: text
+        hint: A paragraph for the top of their page.
       - name: logo
         label: Logo
         widget: image
         required: false
+        hint: >-
+          A PNG with a transparent background or a JPEG on white both work,
+          since it sits on a white tile. Without one the tile shows the name
+          as text.
         media_folder: /assets/brands
         public_folder: %(media)s/brands
+
+  - divider: true
 
   - name: testimonials
     label: Testimonials
     label_singular: Testimonial
+    icon: format_quote
+    description: >-
+      What customers have said. These rotate on the home page and are listed
+      on the Company page.
     folder: /data/testimonials
     format: json
     extension: json
     create: true
+    duplicate: false
     identifier_field: name
     slug: "{{name}}"
-    summary: "{{name}}"
+    summary: "{{name}}, {{role}}"
     fields:
-      - { name: quote, label: What they said, widget: text }
-      - { name: name, label: Their name, widget: string }
-      - { name: role, label: Job title and company, widget: string }
+      - name: quote
+        label: What they said
+        widget: text
+        hint: >-
+          Their words, unedited. Tidying a quote misquotes the person who gave
+          it.
+      - name: name
+        label: Their name
+        widget: string
+      - name: role
+        label: Job title and company
+        widget: string
+        hint: As in President and CEO, Eight TriMedia Pro, Inc.
 """ % {"repo": "%s/%s" % (GH_USER, REPO), "media": media, "base": BASE or "(none)",
        "brands": brand_opts, "cats": cat_opts})
 

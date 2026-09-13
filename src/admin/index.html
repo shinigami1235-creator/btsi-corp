@@ -7,6 +7,16 @@
     <title>8BTSI Corp. website editor</title>
   </head>
   <body>
+    <script>
+      // Opened with no address after the hash, the editor picks its own view
+      // and lands on the picture library, which is not where anyone means to
+      // start. Send it to the product list instead. An address that already
+      // names a view is left alone, so a bookmark still works.
+      if (!location.hash || location.hash === '#' || location.hash === '#/') {
+        location.replace(location.pathname + '#/collections/products');
+      }
+    </script>
+
     <!-- Sveltia CMS. It runs entirely in this browser: it reads and writes the
          files in the GitHub repository over the GitHub API using the token the
          editor signs in with. There is no server of ours anywhere in this. -->
